@@ -1001,9 +1001,8 @@ Trt Eba TV <span class="live-badge">CANLI</span>
 
 
 
-
 <script>
-  // Mevcut kodların altına ekleyebilirsin
+  const controls = document.getElementById('video-controls');
 
   function isMobile() {
     return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -1013,7 +1012,8 @@ Trt Eba TV <span class="live-badge">CANLI</span>
     const channelList = document.getElementById('channel-list');
     if (!channelList) return;
 
-    const isChannelListOpen = channelList.classList.contains('open'); // ya da başka bir kontrol varsa
+    const isChannelListOpen = channelList.classList.contains('open'); // 'open' class'ını açılınca ekle
+
     if (isMobile() && isChannelListOpen) {
       controls.style.display = 'none';
     } else {
@@ -1021,9 +1021,12 @@ Trt Eba TV <span class="live-badge">CANLI</span>
     }
   }
 
-  // Kanal listesi açılıp kapanınca bunu çağır
+  // Kanal listesi açılıp kapanınca sürekli kontrol et
   setInterval(checkControlsVisibility, 300);
 </script>
+
+
+
 
 
 
