@@ -1002,6 +1002,39 @@ Trt Eba TV <span class="live-badge">CANLI</span>
 
 
 
+<script>
+  // Mevcut kodların altına ekleyebilirsin
+
+  function isMobile() {
+    return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  }
+
+  function checkControlsVisibility() {
+    const channelList = document.getElementById('channel-list');
+    if (!channelList) return;
+
+    const isChannelListOpen = channelList.classList.contains('open'); // ya da başka bir kontrol varsa
+    if (isMobile() && isChannelListOpen) {
+      controls.style.display = 'none';
+    } else {
+      controls.style.display = 'flex';
+    }
+  }
+
+  // Kanal listesi açılıp kapanınca bunu çağır
+  setInterval(checkControlsVisibility, 300);
+</script>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
