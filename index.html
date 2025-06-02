@@ -912,3 +912,99 @@ Trt Eba TV <span class="live-badge">CANLI</span>
 
 
 
+
+<!-- SES ve TAM EKRAN Butonları -->
+<div id="video-controls" style="
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 9999;
+  transition: opacity 0.4s ease;
+  opacity: 1;
+">
+
+  <!-- Sesi Aç -->
+  <button onclick="unmutePlayer()" style="
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 40px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  ">
+    🔊 <span>Sesi Aç</span>
+  </button>
+
+  <!-- Tam Ekran -->
+  <button onclick="fullscreenPlayer()" style="
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 40px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  ">
+    ⛶ <span>Full</span>
+  </button>
+
+</div>
+
+<script>
+  const controls = document.getElementById('video-controls');
+  let hideControlsTimeout;
+
+  function showControls() {
+    controls.style.opacity = '1';
+    clearTimeout(hideControlsTimeout);
+    hideControlsTimeout = setTimeout(() => {
+      controls.style.opacity = '0';
+    }, 3000);
+  }
+
+  // Başlangıçta kontrolleri gizle
+  hideControlsTimeout = setTimeout(() => {
+    controls.style.opacity = '0';
+  }, 3000);
+
+  // Mouse veya parmak ekran hareketi
+  document.addEventListener('mousemove', showControls);
+  document.addEventListener('touchstart', showControls);
+
+  // Butonlar için işlevler
+  function unmutePlayer() {
+    const player = videojs('my-video');
+    player.muted(false);
+    player.volume(1);
+  }
+
+  function fullscreenPlayer() {
+    const player = videojs('my-video');
+    if (player.requestFullscreen) {
+      player.requestFullscreen();
+    } else if (player.enterFullScreen) {
+      player.enterFullScreen(); // iOS gibi cihazlar için
+    }
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
