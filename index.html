@@ -1065,59 +1065,74 @@ Trt Eba TV <span class="live-badge">CANLI</span>
 
 
 <style>
-  .iframe-blocker {
+  .iframe-warning {
     position: fixed;
-    inset: 0;
-    background: linear-gradient(135deg, #141e30, #243b55);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 99999;
+    top: 20px;
+    right: 20px;
+    background: #1f1f1f;
     color: white;
+    padding: 20px 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     font-family: "Segoe UI", sans-serif;
+    z-index: 99999;
+    max-width: 400px;
+    animation: slideIn 0.6s ease-out forwards;
+    border-left: 5px solid #ff4c4c;
   }
 
-  .iframe-card {
-    background: #1e2a38;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.4);
-    max-width: 500px;
-    text-align: center;
-    border: 1px solid #3f5770;
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
-  .iframe-card h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    color: #ffffff;
-  }
-
-  .iframe-card p {
-    font-size: 18px;
-    color: #bbbbbb;
-  }
-
-  .iframe-icon {
-    font-size: 50px;
-    margin-bottom: 20px;
+  .iframe-warning h2 {
+    margin: 0 0 10px;
+    font-size: 20px;
     color: #ff4c4c;
+  }
+
+  .iframe-warning p {
+    margin: 0 0 15px;
+    font-size: 15px;
+    color: #ccc;
+  }
+
+  .iframe-warning a {
+    background: #ff4c4c;
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: inline-block;
+    transition: background 0.3s;
+  }
+
+  .iframe-warning a:hover {
+    background: #e43d3d;
   }
 </style>
 
 <script>
   if (window.top !== window.self) {
+    document.body.innerHTML = "";
+    document.body.style.background = "#121212";
     document.body.innerHTML = `
-      <div class="iframe-blocker">
-        <div class="iframe-card">
-          <div class="iframe-icon">🚫</div>
-          <h1>Bu site iframe içinde görüntülenemez</h1>
-          <p>Lütfen doğrudan site adresine giderek erişim sağlayın.</p>
-        </div>
+      <div class="iframe-warning">
+        <h2>🚫 Bu site başka bir sitede gösterilemez!</h2>
+        <p>Lütfen doğrudan site adresine giderek erişim sağlayın.</p>
+        <a href="https://roadsports.github.io/roadsports/" target="_blank">Siteye Git</a>
       </div>
     `;
   }
 </script>
+
 
 
 
