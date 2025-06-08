@@ -1064,12 +1064,58 @@ Trt Eba TV <span class="live-badge">CANLI</span>
 
 
 
+<style>
+  .iframe-blocker {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    color: white;
+    font-family: "Segoe UI", sans-serif;
+  }
+
+  .iframe-card {
+    background: #1e2a38;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.4);
+    max-width: 500px;
+    text-align: center;
+    border: 1px solid #3f5770;
+  }
+
+  .iframe-card h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+
+  .iframe-card p {
+    font-size: 18px;
+    color: #bbbbbb;
+  }
+
+  .iframe-icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+    color: #ff4c4c;
+  }
+</style>
+
 <script>
   if (window.top !== window.self) {
-    // iframe içindeyse yönlendir veya uyarı ver
-    document.body.innerHTML = "<div style='display:flex;justify-content:center;align-items:center;height:100vh;font-family:sans-serif;text-align:center;'><h1>Bu site başka bir sitede iframe olarak gösterilemez.</h1></div>";
-    // Alternatif olarak direkt kendi sitesine yönlendirme yapabilirsin:
-    // window.top.location = window.self.location;
+    document.body.innerHTML = `
+      <div class="iframe-blocker">
+        <div class="iframe-card">
+          <div class="iframe-icon">🚫</div>
+          <h1>Bu site iframe içinde görüntülenemez</h1>
+          <p>Lütfen doğrudan site adresine giderek erişim sağlayın.</p>
+        </div>
+      </div>
+    `;
   }
 </script>
 
