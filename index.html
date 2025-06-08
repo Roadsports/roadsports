@@ -1156,82 +1156,72 @@ Trt Eba TV <span class="live-badge">CANLI</span>
 
 
 <!-- Bildirim Çubuğu -->
-<div id="notificationBar" class="notification-bar">
-  <span>🎉 Hoş geldin! Sitemizde yeni özellikler seni bekliyor.</span>
-  <button id="closeNotification">&times;</button>
+<div id="notificationBar" class="notification-bar hidden">
+  📢 Duyuru: Web Sitemizi başka siteler kullanarak bizleri taklit eden sahte sitelere **itibar etmeyin**. 
+  Giriş adresimiz sadece bu bağlantı adresidir: 
+  <a href="https://roadsports.github.io/roadsports/" target="_blank">(https://roadsports.github.io/roadsports/)</a>
 </div>
 
 <style>
   .notification-bar {
     position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%) translateY(-150%);
-    background: rgba(0, 123, 255, 0.8);
-    backdrop-filter: blur(10px);
-    color: #fff;
-    padding: 1rem 2rem;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    font-family: 'Segoe UI', sans-serif;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    color: white;
+    text-align: center;
+    padding: 1rem 1.5rem;
     font-size: 1rem;
     z-index: 9999;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    transition: transform 0.6s ease, opacity 0.4s ease;
-    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.5s ease;
+    transform: translateY(-100%);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .notification-bar a {
+    color: #00ffff;
+    text-decoration: underline;
+    font-weight: 500;
   }
 
   .notification-bar.show {
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
     opacity: 1;
   }
 
-  .notification-bar button {
-    background: transparent;
-    border: none;
-    color: #fff;
-    font-size: 1.5rem;
-    cursor: pointer;
-    line-height: 1;
-    transition: color 0.3s;
-  }
-
-  .notification-bar button:hover {
-    color: #ddd;
+  .notification-bar.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
   }
 
   @media (max-width: 600px) {
     .notification-bar {
-      width: 90%;
       font-size: 0.9rem;
-      padding: 0.8rem 1.5rem;
+      padding: 0.8rem;
+    }
+
+    .notification-bar a {
+      display: block;
+      margin-top: 0.4rem;
     }
   }
 </style>
 
 <script>
-  const bar = document.getElementById("notificationBar");
-  const closeBtn = document.getElementById("closeNotification");
+  window.addEventListener('load', () => {
+    const bar = document.getElementById('notificationBar');
+    bar.classList.remove('hidden');
+    bar.classList.add('show');
 
-  window.addEventListener("load", () => {
+    // 10 saniye sonra bildirimi gizle
     setTimeout(() => {
-      bar.classList.add("show");
-    }, 500); // 0.5 saniye sonra görünmeye başlasın
-
-    setTimeout(() => {
-      bar.classList.remove("show");
-    }, 10000); // 10 saniye sonra kaybolsun
-  });
-
-  closeBtn.addEventListener("click", () => {
-    bar.classList.remove("show");
+      bar.classList.remove('show');
+      bar.classList.add('hidden');
+    }, 10000);
   });
 </script>
-
-
-
 
 
 
