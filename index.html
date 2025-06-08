@@ -1064,6 +1064,14 @@ Trt Eba TV <span class="live-badge">CANLI</span>
 
 
 
+<script>
+  if (window.top !== window.self) {
+    // iframe içindeyse yönlendir veya uyarı ver
+    document.body.innerHTML = "<div style='display:flex;justify-content:center;align-items:center;height:100vh;font-family:sans-serif;text-align:center;'><h1>Bu site başka bir sitede iframe olarak gösterilemez.</h1></div>";
+    // Alternatif olarak direkt kendi sitesine yönlendirme yapabilirsin:
+    // window.top.location = window.self.location;
+  }
+</script>
 
 
 
