@@ -1294,3 +1294,96 @@ Trt Eba TV <span class="live-badge">CANLI</span>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Yayın</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: white;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    #player {
+      width: 100%;
+      height: 100vh;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+
+<div id="player">Yükleniyor...</div>
+
+<script>
+  // 👮‍♂️ Kopyalama, Sağ tık, Inspect vs engelleme
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('keydown', e => {
+    if (
+      e.key === "F12" ||
+      (e.ctrlKey && e.shiftKey && ['I', 'C', 'J'].includes(e.key.toUpperCase())) ||
+      (e.ctrlKey && ['U', 'S'].includes(e.key.toUpperCase()))
+    ) {
+      e.preventDefault();
+    }
+  });
+
+  // 🔐 Sahte token kontrolü (isteğe bağlı geliştirilir)
+  const allowed = document.referrer.includes(window.location.hostname);
+  if (!allowed) {
+    document.body.innerHTML = "Erişim engellendi!";
+    throw new Error("İzin verilmedi");
+  }
+
+  // 📦 Gizli m3u8 link
+  const realStream = atob("aHR0cHM6Ly9zZW5pbnlheWluLmNvbS94eHgueHl6L3ZpZGVvLm0zdTg="); // örnek şifreli link
+
+  const video = document.createElement('video');
+  video.src = realStream;
+  video.controls = true;
+  video.autoplay = true;
+  video.style.width = "100%";
+  video.style.height = "100%";
+
+  document.getElementById('player').innerHTML = '';
+  document.getElementById('player').appendChild(video);
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
